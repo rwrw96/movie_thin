@@ -3,8 +3,10 @@ class MoviesController < ApplicationController
   Tmdb::Api.language("ja")
   Tmdb::Api.key("")
   
-  
-  def index
+
+  def show 
+    @reviews = Review.all
+    @review = Review.new
+    @movieinfo = JSON.parse((Tmdb::Movie.detail(params[:id])).to_json)
   end
-  
 end
